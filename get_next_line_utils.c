@@ -6,23 +6,11 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:16 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/27 16:18:34 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:52:08 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-	i++;
-	return (i);
-}
 
 int	is_newline(char *str_line)
 {

@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/27 17:51:26 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:51:45 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-#include <fcntl.h>
+# include <fcntl.h>
 // #include <mlx.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
-
+char	**ft_split(char const *s, char c);
+char	**tab_line(int fd, int size);
 int		is_newline(char *str_line);
+int	    ft_endswith(char *filename);
 int		ft_strlen(char *str);
-int     is_rectangle(int count, char *buffer);
+int     nb_line(int fd);
 
 #endif

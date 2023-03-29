@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/27 18:07:32 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:52:52 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,46 +27,35 @@
 
 int	main(void)
 {
-	char	buffer[100];
 	int		fd;
 	int		i;
-	int		count;
-	ssize_t	nread;
+	char	**tab;
+	char	*filename;
+	int		size;
 
-	count = 0;
 	i = 0;
+	filename = "map.ber";
+	if (ft_endswith(filename) == 1)
+		return (0);
 	fd = open("map.ber", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-	nread = read(fd, buffer, sizeof(buffer));
-	if (nread == - 1)
+	size =  nb_line(fd);
+	if (size == 0)
+		return (0);
+	close(fd);
+	fd = open("map.ber", O_RDONLY);
+	tab = tab_line(fd, size);
+	while (tab[i])
 	{
-		perror("read");
-		exit(EXIT_FAILURE);
-	}
-
-	while (buffer[i])
-	{
-		if (buffer[i] == '\n')
-		{
-			printf("in while -> %d\n", count);
-			count += 1;
-		}
+		printf("%s", tab[i]);
 	i++;
 	}
-	
-	if (buffer[i] == '\0')
-		count -= 1;
-	count += 1;
-	printf("Total -> %d\n", count);
-	
-	is_rectangle(count, buffer);
-	if (close(fd) == -1) {
-        perror("close");
-        exit(EXIT_FAILURE);
-    }
 	return (0);
 }
+
+// TODO :
+// tester la taille de chaque ligne

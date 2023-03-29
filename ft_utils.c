@@ -6,37 +6,66 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:42:14 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/27 18:10:33 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:53:03 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	is_rectangle(int count, char *buffer)
+int	nb_line(int fd)
 {
-	int	i;
-	int	tmp;
-	int	f_line;
+	char	*str;
+	int		i;
 
-	// f_line = 13; // toDo: boucle la première line
 	i = 0;
-	while (buffer[i] != '\n')
+	str = get_next_line(fd);
+	while (str)
+	{
+		if (str[0] == '\n')
+		{
+			printf("invalide map\n");
+			return (0);
+		}
+		str = get_next_line(fd);
 	i++;
-	f_line = i;
-	i = 0;
-	while (count)
+	}
+	return (i);
+}
+
+char	**tab_line(int fd, int size)
+{
+	int		i;
+	char	**tab;
+	char	*str;
+
+	i = 1;
+	tab = malloc((size + 1) * sizeof(char *));
+	if (!tab)
+		return (NULL);
+	str = get_next_line(fd);
+	tab[0] = str;
+	while (str)
 	{
-		tmp = i;
-		while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (f_line != (i - tmp))
+		str = get_next_line(fd);
+		tab[i] = str;
+	i++;
+	}
+	tab[i] = 0;
+	return (tab);
+}
+
+int	ft_endswith(char *filename)
+{
+	char	*str;
+	int		size;
+
+	str = ".ber";
+	size = ft_strlen(str);
+	while (size)
 	{
-	printf("NOT RECtangle");
+		if(filename[size] != str[size])
+			return (0);
+	size--;
+	}
 	return (1);
-	}
-	count--;
-	i += 1;
-	}
-	printf("ok ok");
-	return (0);
 }
