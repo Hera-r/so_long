@@ -6,11 +6,11 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/27 17:39:39 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:07:32 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <mlx.h>
+#include "so_long.h"
 
 // int	main(void)
 // {
@@ -24,39 +24,6 @@
 // 	return (0);
 // }
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include "so_long.h"
-
-
-int	is_rectangle(int count, char *buffer)
-{
-	int	i;
-	int	tmp;
-	int	f_line;
-
-	f_line = 13;
-	i = 0;
-	while (count)
-	{
-		tmp = i;
-		while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (f_line != (i - tmp))
-	{
-		printf("error rectagnle\n");
-		return (1);
-	}
-	count--;
-	i += 1;
-	}
-	printf("Ok rectangle");
-	return (0);
-}
-
-
 
 int	main(void)
 {
@@ -66,15 +33,15 @@ int	main(void)
 	int		count;
 	ssize_t	nread;
 
+	count = 0;
+	i = 0;
 	fd = open("map.ber", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-
 	nread = read(fd, buffer, sizeof(buffer));
-
 	if (nread == - 1)
 	{
 		perror("read");
@@ -84,14 +51,19 @@ int	main(void)
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
+		{
+			printf("in while -> %d\n", count);
 			count += 1;
+		}
 	i++;
 	}
+	
 	if (buffer[i] == '\0')
 		count -= 1;
-
+	count += 1;
+	printf("Total -> %d\n", count);
+	
 	is_rectangle(count, buffer);
-
 	if (close(fd) == -1) {
         perror("close");
         exit(EXIT_FAILURE);
