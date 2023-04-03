@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/29 23:52:52 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:08:40 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@
 int	main(void)
 {
 	int		fd;
-	int		i;
+	// int		i;
 	char	**tab;
 	char	*filename;
 	int		size;
 
-	i = 0;
+	// i = 0;
 	filename = "map.ber";
-	if (ft_endswith(filename) == 1)
+	if (ft_endswith(filename) == 0)
 		return (0);
-	fd = open("map.ber", O_RDONLY);
+	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
 		perror("open");
@@ -49,11 +49,13 @@ int	main(void)
 	close(fd);
 	fd = open("map.ber", O_RDONLY);
 	tab = tab_line(fd, size);
-	while (tab[i])
-	{
-		printf("%s", tab[i]);
-	i++;
-	}
+	is_rectangle(tab);
+	ft_valid_wall_perimeter(tab);
+	// while (tab[i])
+	// {
+	// 	printf("%s", tab[i]);
+	// i++;
+	// }
 	return (0);
 }
 

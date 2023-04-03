@@ -1,7 +1,7 @@
 CC=cc
 CFLAGS=-Wall -Wextra -Werror
 NAME=so_long
-SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c
+SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c ft_wall.c
 OBJ_FILES=$(SRC_FILES:.c=.o)
 
 all: $(NAME)

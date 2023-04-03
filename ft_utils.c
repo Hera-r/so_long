@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:42:14 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/29 23:53:03 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:57:40 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	nb_line(int fd)
 	{
 		if (str[0] == '\n')
 		{
-			printf("invalide map\n");
+			printf("Not valid map\n");
 			return (0);
 		}
 		str = get_next_line(fd);
@@ -64,8 +64,8 @@ int	ft_endswith(char *filename)
 	while (size)
 	{
 		if(filename[size] != str[size])
-			return (0);
+			return (1);
 	size--;
 	}
-	return (1);
+	return (0);
 }

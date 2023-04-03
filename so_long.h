@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/29 23:51:45 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:22:52 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int		is_newline(char *str_line);
 int	    ft_endswith(char *filename);
 int		ft_strlen(char *str);
 int     nb_line(int fd);
+int	    is_rectangle(char **tab);
+int     ft_valid_wall_perimeter(char **tab);
 
 #endif
