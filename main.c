@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/04/03 17:08:40 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/25 21:21:32 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,17 @@ int	main(void)
 	char	**tab;
 	char	*filename;
 	int		size;
+	int		count;
+	// int		y;
+	// int		x;
+
+	// y = 0;
+	// x = 0;
+	// t_sizemap cordo;
+	t_pos	player;
 
 	// i = 0;
+	count = 0;
 	filename = "map.ber";
 	if (ft_endswith(filename) == 0)
 		return (0);
@@ -51,10 +60,26 @@ int	main(void)
 	tab = tab_line(fd, size);
 	is_rectangle(tab);
 	ft_valid_wall_perimeter(tab);
-	// while (tab[i])
+	// cordo = ft_rows_cols_map(tab);
+	player = ft_find_pos_player(tab);
+
+	// while (y < cordo.cols)
 	// {
-	// 	printf("%s", tab[i]);
-	// i++;
+	// 	while (x < cordo.rows)
+	// 	{
+			// if (tab[y][x] == 'C')
+			// {
+				// printf(" position C est: (%d ,%d)\n", y, x);
+				if (ft_dfs(player.y, player.x, tab, 'C') == 0)
+				{
+					count++;
+					printf("Le nombre de C est (%d).\n", count);
+				}
+			// }
+	// 	x++;
+	// 	}
+	// y++;
+	// x = 0;
 	// }
 	return (0);
 }

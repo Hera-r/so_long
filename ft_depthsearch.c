@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/04/12 16:42:42 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/25 21:17:21 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,87 @@
 
 t_sizemap	ft_rows_cols_map(char **map)
 {
-	t_sizemap	size_map;
+	t_sizemap	sizemap;
 
-	size_map.rows = ft_len_not_newline(map[0]);
-	size_map.cols = count_element_tab(map);
-	return (size_map);
+	sizemap.rows = ft_len_not_newline(map[0]); // 28
+	sizemap.cols = count_element_tab(map); // 5
+	return (sizemap);
 }
 
 t_pos	ft_find_pos_player(char **map)
 {
 	t_sizemap sizemap;
-	t_pos		pos;
-	int			i;
-	int			j;
+	t_pos		poz;
+	int			y;
+	int			x;
 
-	i = 0;
-	j = 0;
+	y = 0;
+	x = 0;
+	poz.x = -1;
+	poz.y = -1;
 	sizemap = ft_rows_cols_map(map);
-	while (i < sizemap.cols)
+	while (y < sizemap.cols)
 	{
-		while (j < sizemap.rows)
+		while (x < sizemap.rows)
 		{
-			if (map[i][j] == 'P')
+			if (map[y][x] == 'P')
 			{
-				pos.y = i;
-				pos.x = j;
-				return (pos);
+				poz.y = y;
+				poz.x = x;
+				return (poz);
 			}
-		j++;
+		x++;
 		}
-	i++;
-	j = 0;
+	y++;
+	x = 0;
 	}
-	return (pos);
+	return (poz);
 }
 
-int ft_is_valid(int x, int y, char **map)
+int ft_is_valid(int px, int py, char **map)
 {
 	t_sizemap sizemap;
 
 	sizemap = ft_rows_cols_map(map);
-	if (x < 0 || x >= sizemap.rows || y < 0 || y >= sizemap.cols)
+	if (px < 0 || px >= sizemap.rows || py < 0 || py >= sizemap.cols)
+		return (1);
+	if (map[py][px] == '1')
 		return (1);
 	return (0);
 }
 
-int	ft_dfs(int x, int y, char **map)
+int	ft_dfs(int y, int x, char **map, char target)
 {
-	int	cols;
+	t_axe	axes;
 	int	i;
 	int	px;
 	int	py;
-	int	dx[4] = {0, 1, 0, -1};
-	int	dy[4] = {-1, 0, 1, 0};
+	int	j = 0;
 
-	cols = count_element_tab(map);
-	if (map[y][x] == 'C')
+	i = 0;
+	axes = ft_init_axe();
+	if (map[y][x] == '1')
 		return (0);
-
 	map[y][x] = 'X';
-	while (i < cols)
+	while (i < 4)
 	{
-		px = x + dx[i];
-		py = y + dy[i];
-		if (ft_dfs(px, py, map) && ft_is_valid(px, py, map) != 1)
-			return (0);
+		py = y + axes.dy[i];
+		px = x + axes.dx[i];
+		if (ft_is_valid(px, py, map) == 0 && map[py][px] != 'X')
+		{
+			if (ft_dfs(py, px, map, target) == 0)
+			{	
+				printf("\n");
+				return (0);
+			}
+			while (map[j])
+			{
+					printf("%s", map[j]);
+				j++;
+			}
+		
+			printf("\n\n");
+		}
 	i++;
 	}
 	return (1);

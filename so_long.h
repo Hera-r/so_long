@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/04/12 16:42:24 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:03:20 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ typedef struct t_cordo{
 	int	rows;
 	int	cols;
 }			t_sizemap;
+typedef struct t_axe{
+    int *dx;
+    int *dy;
+}			t_axe;
+t_axe		ft_init_axe(void);
+t_sizemap	ft_rows_cols_map(char **map);
+t_pos		ft_find_pos_player(char **map);
+int			ft_dfs(int x, int y, char **map, char target);
 #endif
