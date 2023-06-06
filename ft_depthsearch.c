@@ -92,7 +92,6 @@ int	ft_dfs(int y, int x, char **map, char target)
 					printf("%s", map[j]);
 				j++;
 			}
-		
 			printf("\n\n");
 		}
 	i++;

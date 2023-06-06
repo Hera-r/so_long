@@ -32,7 +32,7 @@ int	main(void)
 	char	**tab;
 	char	*filename;
 	int		size;
-	int		count;
+	//int		count;
 	// int		y;
 	// int		x;
 
@@ -42,7 +42,7 @@ int	main(void)
 	t_pos	player;
 
 	// i = 0;
-	count = 0;
+	//count = 0;
 	filename = "map.ber";
 	if (ft_endswith(filename) == 0)
 		return (0);
@@ -62,25 +62,8 @@ int	main(void)
 	ft_valid_wall_perimeter(tab);
 	// cordo = ft_rows_cols_map(tab);
 	player = ft_find_pos_player(tab);
+	ft_dfs(player.y, player.x, tab, 'C');
 
-	// while (y < cordo.cols)
-	// {
-	// 	while (x < cordo.rows)
-	// 	{
-			// if (tab[y][x] == 'C')
-			// {
-				// printf(" position C est: (%d ,%d)\n", y, x);
-				if (ft_dfs(player.y, player.x, tab, 'C') == 0)
-				{
-					count++;
-					printf("Le nombre de C est (%d).\n", count);
-				}
-			// }
-	// 	x++;
-	// 	}
-	// y++;
-	// x = 0;
-	// }
 	return (0);
 }
 
