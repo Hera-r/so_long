@@ -1,19 +1,18 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
 NAME=so_long
-SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c ft_wall.c ft_depthsearch.c ft_utils_dfs.c
-OBJ_FILES=$(SRC_FILES:.c=.o)
+SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c ft_wall.c ft_depthsearch.c ft_utils_dfs.c ft_map_valid.c
+OBJ=$(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES)
-
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
-	rm -f $(OBJ_FILES)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

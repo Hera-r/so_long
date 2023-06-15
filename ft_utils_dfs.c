@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:05:03 by hrandria          #+#    #+#             */
-/*   Updated: 2023/06/01 15:40:48 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:36:15 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,3 @@ t_axe	ft_init_axe(void)
 	axes.dy = ft_tab_axe(-1, 0, 1, 0);
 	return (axes);
 }
-	// int	dx[4] = {0, 1, 0, -1};
-	// int	dy[4] = {-1, 0, 1, 0};
