@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/06/15 17:58:18 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/14 22:04:06 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,6 @@ void	ft_map_check(char **map)
 }
 
 
-// int	main(void)
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-
-// 	mlx = mlx_init();
-// 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-// 	mlx_loop(mlx);
-
-// 	return (0);
-// }
-
 
 int	main(void)
 {
@@ -48,6 +36,10 @@ int	main(void)
 	char	**copy_map;
 	int		fd;
 	int		size;
+	// void	*mlx;
+	// void	*mlx_win;
+	t_sizemap cordo;
+	t_vars		vars;
 
 	filename = "map.ber";
 	if (ft_endswith(filename) == 0)
@@ -58,36 +50,34 @@ int	main(void)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
+
 	size =  nb_line(fd);
 	if (size == 0)
 		return (0);
 	close(fd);
 	fd = open("map.ber", O_RDONLY);
 	map = tab_line(fd, size);
-	copy_map = map;
+	cordo = ft_rows_cols_map(map);
+
+	copy_map = ft_copy_array(map, cordo);
 	ft_map_check(map);
 
 /* ===> Minilibx <=== */ 
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1900, 1000, "So long");
 
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-
+	ft_display_sprite(cordo, vars, copy_map);
+	mlx_loop(vars.mlx);
 
 	return (0);
 }
-
-
 
 // TODO :
 /*
 => tester la taille de chaque ligne
 
 => arreter le pgrogamme si il y a yn soucis
-pour le moment il continue
-de checker les autres fonctions meme en cas d'erreur
-avec celui du precend
+pour le moment il continue de 
+checker les autres fonctions meme en cas d'erreur
+avec celui du precendent
 */
