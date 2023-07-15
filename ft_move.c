@@ -6,18 +6,56 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:19:28 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/15 01:21:29 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:16:52 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_pos player, t_pos pos, char **map)
+void	ft_move_up(t_vars vars,t_pos player,  char **map)
 {
-	int	img_width; 
-	int	img_height;
+	if (map[player.y - 1][player.x] != '1')
+	{
+		map[player.y][player.x] = '0';
+		ft_images(vars, player, "./images/back.xpm");
+		player.y--;
+		map[player.y][player.x] = 'P';
+		ft_images(vars, player, "./images/player.xpm");
+	}
+}
 
-	pos.y = player.y + 1;
-	if (map[pos.y][pos.x] != '1')
-		ft_images(vars, pos, "./images/player.xpm")
+void	ft_move_down(t_vars vars,t_pos player,  char **map)
+{
+	if (map[player.y + 1][player.x] != '1')
+	{
+		map[player.y][player.x] = '0';
+		ft_images(vars, player, "./images/back.xpm");
+		player.y++;
+		map[player.y][player.x] = 'P';
+		ft_images(vars, player, "./images/player.xpm");
+	}
+}
+
+void	ft_move_right(t_vars vars,t_pos player,  char **map)
+{
+	if (map[player.y][player.x + 1] != '1')
+	{
+		map[player.y][player.x] = '0';
+		ft_images(vars, player, "./images/back.xpm");
+		player.x++;
+		map[player.y][player.x] = 'P';
+		ft_images(vars, player, "./images/player.xpm");
+	}
+}
+
+void	ft_move_left(t_vars vars,t_pos player,  char **map)
+{
+	if (map[player.y][player.x - 1] != '1')
+	{
+		map[player.y][player.x] = '0';
+		ft_images(vars, player, "./images/back.xpm");
+		player.x--;
+		map[player.y][player.x] = 'P';
+		ft_images(vars, player, "./images/player.xpm");
+	}
 }

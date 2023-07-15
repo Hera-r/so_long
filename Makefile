@@ -1,6 +1,6 @@
 CC=cc
 NAME=so_long
-SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c ft_wall.c ft_depthsearch.c ft_utils_dfs.c ft_map_valid.c ft_put_image.c ft_libft_tmp.c
+SRC_FILES=main.c ft_utils.c ft_split.c ft_strlen.c get_next_line.c get_next_line_utils.c ft_wall.c ft_depthsearch.c ft_utils_dfs.c ft_map_valid.c ft_put_image.c ft_libft_tmp.c ft_move.c
 OBJ=$(SRC_FILES:.c=.o)
 
 all: $(NAME)

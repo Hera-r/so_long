@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/14 22:40:16 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:17:02 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct t_elements{
 typedef	struct	s_vars {
 	void	*mlx;
 	void	*win;
+	char	**map;
 }				t_vars;
 t_axe		ft_init_axe(void);
 t_sizemap	ft_rows_cols_map(char **map);
@@ -74,5 +75,8 @@ void	ft_display_sprite(t_sizemap cordo, t_vars vars, char **map);
 char		*ft_strdup(char *s);
 char		**ft_copy_array(char **map, t_sizemap cordo);
 void		ft_images(t_vars vars, t_pos pos, char *img_path);
-
+void	ft_move_up(t_vars vars,t_pos player,  char **map);
+void	ft_move_down(t_vars vars,t_pos player,  char **map);
+void	ft_move_right(t_vars vars,t_pos player,  char **map);
+void	ft_move_left(t_vars vars,t_pos player,  char **map);
 #endif

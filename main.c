@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/14 22:04:06 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:24:41 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,27 @@ void	ft_map_check(char **map)
 	ft_find_elemt_dfs(cordo.cols, cordo.rows, map);
 }
 
-
+int	key_hook(int keycode, t_vars *vars)
+{
+	t_pos		player;
+	player = ft_find_pos_player(vars->map);
+	if (keycode == 'w')
+		ft_move_up(*vars, player, vars->map);
+	if (keycode == 's')
+		ft_move_down(*vars, player, vars->map);
+	if (keycode == 'd')
+		ft_move_right(*vars, player, vars->map);
+	if (keycode == 'a')
+		ft_move_left(*vars, player, vars->map);
+	return (0);
+}
 
 int	main(void)
 {
 	char	*filename;
 	char	**map;
-	char	**copy_map;
 	int		fd;
 	int		size;
-	// void	*mlx;
-	// void	*mlx_win;
 	t_sizemap cordo;
 	t_vars		vars;
 
@@ -58,15 +68,14 @@ int	main(void)
 	fd = open("map.ber", O_RDONLY);
 	map = tab_line(fd, size);
 	cordo = ft_rows_cols_map(map);
-
-	copy_map = ft_copy_array(map, cordo);
+	vars.map = ft_copy_array(map, cordo);
 	ft_map_check(map);
 
 /* ===> Minilibx <=== */ 
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1900, 1000, "So long");
-
-	ft_display_sprite(cordo, vars, copy_map);
+	ft_display_sprite(cordo, vars, vars.map);
+	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop(vars.mlx);
 
 	return (0);
