@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:32:21 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/14 19:53:12 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:34:07 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_copy_array(char **map, t_sizemap cordo)
 	int		i;
 
 	i = 0;
-	copy_map = (char **)malloc(cordo.cols  * sizeof(char *));
+	copy_map = malloc(cordo.cols  * sizeof(char *));
 	if (copy_map == NULL)
 		return (0);
 	while (map[i])
@@ -46,5 +46,6 @@ char	**ft_copy_array(char **map, t_sizemap cordo)
 		copy_map[i] = ft_strdup(map[i]);
 	i++;
 	}
+	copy_map[i] = 0;
 	return (copy_map);
 }

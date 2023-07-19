@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:42:14 by hrandria          #+#    #+#             */
-/*   Updated: 2023/06/01 15:40:44 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:04:28 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,27 @@ int	ft_endswith(char *filename)
 	size--;
 	}
 	return (0);
+}
+
+int	ft_nb_collect(int cols, int rows, char **map)
+{
+    int			y;
+    int			x;
+	int			count;
+
+	y = 1;
+	x = 0;
+	count = 0;
+	while (y < cols)
+	{
+		while (x < rows)
+		{
+			if (map[y][x] == 'C')
+				count++;
+		x++;
+		}
+	y++;
+	x = 0;
+	}
+	return (count);
 }

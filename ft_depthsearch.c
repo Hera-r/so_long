@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/13 20:28:43 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:11:05 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_dfs(int y, int x, char **map, char target)
 
 	i = 0;
 	axes = ft_init_axe();
-	if (map[y][x] == '1')
+	if (map[y][x] == '1' || map[y][x] == 'E')
 		return (0);
 	map[y][x] = 'X';
 	while (i < 4)

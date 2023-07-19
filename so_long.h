@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/15 20:17:02 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:30:22 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ typedef	struct	s_vars {
 	void	*mlx;
 	void	*win;
 	char	**map;
+	int		*count;
+	char	*wall;
+	char	*exit;
+	char	*player;
+	char	*back;
 }				t_vars;
 t_axe		ft_init_axe(void);
 t_sizemap	ft_rows_cols_map(char **map);
@@ -79,4 +84,5 @@ void	ft_move_up(t_vars vars,t_pos player,  char **map);
 void	ft_move_down(t_vars vars,t_pos player,  char **map);
 void	ft_move_right(t_vars vars,t_pos player,  char **map);
 void	ft_move_left(t_vars vars,t_pos player,  char **map);
+int	ft_nb_collect(int cols, int rows, char **map);
 #endif

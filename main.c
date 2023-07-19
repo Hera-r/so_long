@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/15 20:24:41 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:45:50 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_map_check(char **map)
 int	key_hook(int keycode, t_vars *vars)
 {
 	t_pos		player;
+
 	player = ft_find_pos_player(vars->map);
 	if (keycode == 'w')
 		ft_move_up(*vars, player, vars->map);
@@ -50,6 +51,7 @@ int	main(void)
 	int		size;
 	t_sizemap cordo;
 	t_vars		vars;
+	int		nb_collect;
 
 	filename = "map.ber";
 	if (ft_endswith(filename) == 0)
@@ -70,6 +72,12 @@ int	main(void)
 	cordo = ft_rows_cols_map(map);
 	vars.map = ft_copy_array(map, cordo);
 	ft_map_check(map);
+	nb_collect = ft_nb_collect(cordo.cols, cordo.rows, vars.map);
+	vars.count = &nb_collect;
+	vars.wall = "./images/wall.xpm";
+	vars.player = "./images/player.xpm";
+	vars.back = "./images/back.xpm";
+	vars.exit = "./images/exit.xpm";
 
 /* ===> Minilibx <=== */ 
 	vars.mlx = mlx_init();
