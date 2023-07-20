@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:19:28 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/19 22:45:05 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:28:12 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ void	ft_move_up(t_vars vars,t_pos player,  char **map)
 		if (map[player.y - 1][player.x] == 'C')
 		{
 			(*vars.count)--;
-			fprintf(stderr, "Entre ici %d\n", *vars.count);
+			fprintf(stderr, "Nombre move : %d ", *vars.nb_move);
 		}
 		if (map[player.y][player.x - 1] != 'E' && *vars.count >= 0)
 		{
 			map[player.y][player.x] = '0';
 			ft_images(vars, player, "./images/back.xpm");
 			player.y--;
+			(*vars.nb_move)++;
+			fprintf(stderr, "Nombre move : %d\n", *vars.nb_move);
 			map[player.y][player.x] = 'P';
 			ft_images(vars, player, "./images/player.xpm");
 		}
@@ -48,6 +50,8 @@ void	ft_move_down(t_vars vars,t_pos player,  char **map)
 			map[player.y][player.x] = '0';
 			ft_images(vars, player, "./images/back.xpm");
 			player.y++;
+			(*vars.nb_move)++;
+			fprintf(stderr, "Nombre move : %d\n", *vars.nb_move);
 			map[player.y][player.x] = 'P';
 			ft_images(vars, player, "./images/player.xpm");
 		}
@@ -92,6 +96,8 @@ void	ft_move_left(t_vars vars,t_pos player,  char **map)
 			map[player.y][player.x] = '0';
 			ft_images(vars, player, "./images/back.xpm");
 			player.x--;
+			(*vars.nb_move)++;
+			fprintf(stderr, "Nombre move : %d\n", *vars.nb_move);
 			map[player.y][player.x] = 'P';
 			ft_images(vars, player, "./images/player.xpm");
 		}
@@ -100,8 +106,12 @@ void	ft_move_left(t_vars vars,t_pos player,  char **map)
 	}
 }
 
+
+
+
+
 // ToDO
 /*
-
+Verifier pourquoi pas acces a C,
 
 */

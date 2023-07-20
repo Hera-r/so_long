@@ -6,25 +6,30 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/19 22:45:50 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:34:10 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_map_check(char **map)
+int	ft_map_check(char **map)
 {
 	t_pos		player;
 	t_sizemap	cordo;
 
-	is_rectangle(map);
-	ft_valid_wall_perimeter(map);
 	cordo = ft_rows_cols_map(map);
-	ft_nb_elmts(cordo.cols, cordo.rows, map);
-	ft_elements_valid(cordo.cols, cordo.rows, map);
 	player = ft_find_pos_player(map);
-	ft_dfs(player.y, player.x, map, 'C');
-	ft_find_elemt_dfs(cordo.cols, cordo.rows, map);
+	if (is_rectangle(map) == 1)
+		return (1);
+	ft_valid_wall_perimeter(map);
+	if (ft_nb_elmts(cordo.cols, cordo.rows, map) == 1)
+		return (1);
+	if (ft_elements_valid(cordo.cols, cordo.rows, map) == 1)
+		return (1);
+	ft_dfs(player.y, player.x, map);
+	if (ft_find_elemt_dfs(cordo.cols, cordo.rows, map) == 1)
+		return (1);
+	return (0);
 }
 
 int	key_hook(int keycode, t_vars *vars)
@@ -43,49 +48,66 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	char	*filename;
 	char	**map;
 	int		fd;
+	int		fd2;
 	int		size;
 	t_sizemap cordo;
 	t_vars		vars;
 	int		nb_collect;
+	int		nb_move;
 
-	filename = "map.ber";
-	if (ft_endswith(filename) == 0)
-		return (0);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	nb_move = 0;
+	size = 0;
+	if (argc == 2)
 	{
-		perror("open");
-		exit(EXIT_FAILURE);
+		if (ft_endswith(argv[1]) == 0)
+			return (0);
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			perror("open");
+			exit(EXIT_FAILURE);
+		}
+		size =  nb_line(fd);
+		if (size == 1)
+			return (close(fd), 0);
+		close(fd);
+		fd2 = open(argv[1], O_RDONLY);
+		if (fd2 == -1)
+		{
+			perror("open");
+			exit(EXIT_FAILURE);
+		}
+
+		map = tab_line(fd2, size);
+		cordo = ft_rows_cols_map(map);
+		vars.map = ft_copy_array(map, cordo);
+		if (ft_map_check(map) == 1)
+			return (0);
+		int m = 0;
+		while(map[m])
+		{
+			printf("%s", map[m]);
+		m++;
+		}
+		nb_collect = ft_nb_collect(cordo.cols, cordo.rows, vars.map);
+		vars.count = &nb_collect;
+		vars.nb_move = &nb_move;
+		vars.wall = "./images/wall.xpm";
+		vars.player = "./images/player.xpm";
+		vars.back = "./images/back.xpm";
+		vars.exit = "./images/exit.xpm";
+
+	/* ===> Minilibx <=== */ 
+		vars.mlx = mlx_init();
+		vars.win = mlx_new_window(vars.mlx, 1900, 1000, "So long");
+		ft_display_sprite(cordo, vars, vars.map);
+		mlx_key_hook(vars.win, key_hook, &vars);
+		mlx_loop(vars.mlx);
 	}
-
-	size =  nb_line(fd);
-	if (size == 0)
-		return (0);
-	close(fd);
-	fd = open("map.ber", O_RDONLY);
-	map = tab_line(fd, size);
-	cordo = ft_rows_cols_map(map);
-	vars.map = ft_copy_array(map, cordo);
-	ft_map_check(map);
-	nb_collect = ft_nb_collect(cordo.cols, cordo.rows, vars.map);
-	vars.count = &nb_collect;
-	vars.wall = "./images/wall.xpm";
-	vars.player = "./images/player.xpm";
-	vars.back = "./images/back.xpm";
-	vars.exit = "./images/exit.xpm";
-
-/* ===> Minilibx <=== */ 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1900, 1000, "So long");
-	ft_display_sprite(cordo, vars, vars.map);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(vars.mlx);
-
 	return (0);
 }
 

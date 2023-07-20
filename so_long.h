@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/19 22:30:22 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:30:29 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "mlx_linux/mlx.h"
+
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
@@ -67,15 +68,15 @@ typedef	struct	s_vars {
 	char	*exit;
 	char	*player;
 	char	*back;
+	int		*nb_move;
 }				t_vars;
 t_axe		ft_init_axe(void);
 t_sizemap	ft_rows_cols_map(char **map);
-t_pos		ft_find_pos_player(char **map);
-int			ft_dfs(int x, int y, char **map, char target);
+t_pos	ft_find_pos_player(char **map);
+int	ft_dfs(int y, int x, char **map);
 int			ft_find_elemt_dfs(int cols, int rows, char **map);
 int			ft_elements_valid(int cols, int rows, char **map);
 int			ft_nb_elmts(int cols, int rows, char **map);
-// void		ft_display_sprite(t_sizemap cordo, void *mlx, void *mlx_win, char **map);
 void	ft_display_sprite(t_sizemap cordo, t_vars vars, char **map);
 char		*ft_strdup(char *s);
 char		**ft_copy_array(char **map, t_sizemap cordo);

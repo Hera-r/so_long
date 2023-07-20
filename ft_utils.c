@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:42:14 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/19 21:04:28 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:31:31 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	nb_line(int fd)
 		if (str[0] == '\n')
 		{
 			printf("Not valid map\n");
-			return (0);
+			return (1);
 		}
 		str = get_next_line(fd);
 	i++;

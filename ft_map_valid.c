@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:58:53 by hrandria          #+#    #+#             */
-/*   Updated: 2023/06/15 17:13:54 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:29:22 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_elements_valid(int cols, int rows, char **map)
 			if (map[y][x] != '1' && map[y][x] != 'C' && map[y][x] != 'P' && map[y][x] != 'E' && map[y][x] != '0')
 			{
 				printf("Element not valid\n");
-				exit(0);
+				return (1);
 			}
 		x++;
 		}
@@ -62,31 +62,31 @@ int	ft_elements_valid(int cols, int rows, char **map)
 
 t_elements	ft_count_elements(int cols, int rows, char **map)
 {
-    t_elements	nb_elmts;
+    t_elements	nb_elmt;
     int			y;
     int			x;
 
 	y = 1;
 	x = 0;
-	nb_elmts.c = 0;
-	nb_elmts.e = 0;
-	nb_elmts.p = 0;
+	nb_elmt.c = 0;
+	nb_elmt.e = 0;
+	nb_elmt.p = 0;
 	while (y < cols)
 	{
 		while (x < rows)
 		{
 			if (map[y][x] == 'C')
-				nb_elmts.c++;
+				nb_elmt.c++;
 			if (map[y][x] == 'P')
-				nb_elmts.p++;
+				nb_elmt.p++;
 			if (map[y][x] == 'E')
-				nb_elmts.e++;
+				nb_elmt.e++;
 		x++;
 		}
 	y++;
 	x = 0;
 	}
-	return (nb_elmts);
+	return (nb_elmt);
 }
 
 int	ft_nb_elmts(int cols, int rows, char **map)
