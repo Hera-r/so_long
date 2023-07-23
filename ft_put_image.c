@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:54:23 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/23 18:46:53 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:50:40 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_images(t_vars vars, t_pos player, char *img_path)
 		mlx_destroy_image(vars.mlx, img);
 	}
 }
-
 
 void	ft_display_sprite(t_sizemap cordo, t_vars vars, char **map)
 {

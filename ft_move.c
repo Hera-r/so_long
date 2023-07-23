@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:19:28 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/23 17:19:27 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:50:43 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	ft_move_right(t_vars vars,t_pos player,  char **map)
 		}
 		else if (map[player.y][player.x + 1] == 'E' && *vars.count == 0)
 		{
-			fprintf(stderr, "entre dans la fin\n");
 			exit_hook(&vars);
 		}
 	}

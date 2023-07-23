@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:05:03 by hrandria          #+#    #+#             */
-/*   Updated: 2023/06/15 16:36:15 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:50:30 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	*ft_tab_axe(int a, int b, int c, int d)
 {
 	int	*axe_x;
-	axe_x = (int*)malloc(4 * sizeof(int));
+
+	axe_x = (int *)malloc(4 * sizeof(int));
 	if (!axe_x)
 		return (0);
 	axe_x[0] = a;

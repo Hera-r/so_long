@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:32:21 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/23 17:47:58 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:47:50 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_dif_wall(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
 		if (str[i] != '1')
 			return (FAIL);
