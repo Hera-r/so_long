@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/20 22:21:58 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/21 23:46:32 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ int ft_is_valid(int px, int py, char **map)
 
 	sizemap = ft_rows_cols_map(map);
 	if (px < 0 || px >= sizemap.rows || py < 0 || py >= sizemap.cols)
-		return (1);
+		return (FAIL);
 	if (map[py][px] == '1')
-		return (1);
+		return (FAIL);
 	if (map[py][px] == 'E')
 	{
 		map[py][px] = 'X';
-		return (1);
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	ft_dfs(int y, int x, char **map)
@@ -78,7 +78,7 @@ int	ft_dfs(int y, int x, char **map)
 	i = 0;
 	axes = ft_init_axe();
 	if (map[y][x] == '1')
-		return (0);
+		return (FAIL);
 	map[y][x] = 'X';
 	while (i < 4)
 	{
@@ -87,11 +87,9 @@ int	ft_dfs(int y, int x, char **map)
 		if (ft_is_valid(px, py, map) == 0 && map[py][px] != 'X')
 		{
 			if (ft_dfs(py, px, map) == 0)
-			{
-				return (0);
-			}
+				return (free(axes.dx), free(axes.dy),SUCCESS);
 		}
 	i++;
 	}
-	return (1);
+	return (free(axes.dx), free(axes.dy), FAIL);
 }

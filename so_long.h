@@ -6,13 +6,15 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/20 20:30:29 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/23 18:49:21 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
+# define SUCCESS 0
+# define FAIL 1
+# define XK_ESCAPE 0xff1b
 # ifndef BUFFER_SIZE
 #  define  BUFFER_SIZE 42
 # endif
@@ -64,10 +66,11 @@ typedef	struct	s_vars {
 	void	*win;
 	char	**map;
 	int		*count;
-	char	*wall;
-	char	*exit;
-	char	*player;
-	char	*back;
+	void	*wall;
+	void	*exit;
+	void	*player;
+	void	*back;
+	void	*collectible;
 	int		*nb_move;
 }				t_vars;
 t_axe		ft_init_axe(void);
@@ -85,5 +88,8 @@ void	ft_move_up(t_vars vars,t_pos player,  char **map);
 void	ft_move_down(t_vars vars,t_pos player,  char **map);
 void	ft_move_right(t_vars vars,t_pos player,  char **map);
 void	ft_move_left(t_vars vars,t_pos player,  char **map);
+void	ft_free_map(char **map);
 int	ft_nb_collect(int cols, int rows, char **map);
+int	exit_hook(t_vars *vars);
+int	ft_dif_wall(char *str);
 #endif

@@ -6,11 +6,24 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:32:21 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/19 12:34:07 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/23 17:47:58 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+	i++;
+	}
+	free(map);
+}
 
 char	*ft_strdup(char *s)
 {
@@ -36,9 +49,11 @@ char	**ft_copy_array(char **map, t_sizemap cordo)
 {
 	char	**copy_map;
 	int		i;
+	int		tmp_cols;
 
 	i = 0;
-	copy_map = malloc(cordo.cols  * sizeof(char *));
+	tmp_cols = cordo.cols;
+	copy_map = malloc((tmp_cols + 1) * sizeof(char *));
 	if (copy_map == NULL)
 		return (0);
 	while (map[i])
@@ -46,6 +61,20 @@ char	**ft_copy_array(char **map, t_sizemap cordo)
 		copy_map[i] = ft_strdup(map[i]);
 	i++;
 	}
-	copy_map[i] = 0;
+	copy_map[i] = NULL;
 	return (copy_map);
+}
+
+int	ft_dif_wall(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] != '\n')
+	{
+		if (str[i] != '1')
+			return (FAIL);
+	i++;
+	}
+	return (SUCCESS);
 }

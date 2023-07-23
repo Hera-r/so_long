@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:58:53 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/20 20:29:22 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:44:32 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_find_elemt_dfs(int cols, int rows, char **map)
 			if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')
 			{
 				printf("Not acces (C, P, E)\n");
-				return(1);
+				return(FAIL);
 			}
 		x++;
 		}
 	y++;
 	x = 0;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	ft_elements_valid(int cols, int rows, char **map)
@@ -50,14 +50,14 @@ int	ft_elements_valid(int cols, int rows, char **map)
 			if (map[y][x] != '1' && map[y][x] != 'C' && map[y][x] != 'P' && map[y][x] != 'E' && map[y][x] != '0')
 			{
 				printf("Element not valid\n");
-				return (1);
+				return (FAIL);
 			}
 		x++;
 		}
 	y++;
 	x = 0;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 t_elements	ft_count_elements(int cols, int rows, char **map)
@@ -97,17 +97,17 @@ int	ft_nb_elmts(int cols, int rows, char **map)
 	if (elemts.c <= 0)
 	{
 		printf("Item not found\n");
-		return (1);
+		return (FAIL);
 	}
 	else if (elemts.p > 1 || elemts.p == 0)
 	{
-		printf("Player not found or superor 1\n");
-		return (1);
+		printf("Player not found or superior 1\n");
+		return (FAIL);
 	}
 	else if (elemts.e > 1 || elemts.e == 0)
 	{
-		printf("Exit not found or superor 1\n");
-		return (1);
+		printf("Exit not found or superior 1\n");
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
