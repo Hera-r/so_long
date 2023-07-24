@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:02:53 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 00:22:45 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:44:01 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_get_index(char *str)
 	{
 		if (str[i] && str[i] == '\n')
 			return (i);
-	i++;
+		i++;
 	}
 	return (i);
 }
@@ -49,7 +49,7 @@ static char	*get_remainder_str(char *str)
 	while (str[i])
 	{
 		new_str[i] = str[i];
-	i++;
+		i++;
 	}
 	new_str[i] = '\0';
 	return (new_str);

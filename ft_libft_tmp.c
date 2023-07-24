@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:32:21 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 00:47:50 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:23:57 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_free_map(char **map)
 	while (map[i])
 	{
 		free(map[i]);
-	i++;
+		i++;
 	}
 	free(map);
 }
@@ -39,7 +39,7 @@ char	*ft_strdup(char *s)
 	while (s[i])
 	{
 		new_space[i] = s[i];
-	i++;
+		i++;
 	}
 	new_space[i] = '\0';
 	return (new_space);
@@ -59,7 +59,7 @@ char	**ft_copy_array(char **map, t_sizemap cordo)
 	while (map[i])
 	{
 		copy_map[i] = ft_strdup(map[i]);
-	i++;
+		i++;
 	}
 	copy_map[i] = NULL;
 	return (copy_map);
@@ -74,7 +74,23 @@ int	ft_dif_wall(char *str)
 	{
 		if (str[i] != '1')
 			return (FAIL);
-	i++;
+		i++;
 	}
 	return (SUCCESS);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	int	i;
+
+	i = 0;
+	while (((unsigned char)s1[i] == (unsigned char)s2[i]) 
+		&& s1[i] && s2[i] && n)
+	{
+		i++;
+		n--;
+	}
+	if (n == 0)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

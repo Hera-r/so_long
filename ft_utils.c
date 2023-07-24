@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:42:14 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 00:24:32 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:41:14 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	nb_line(int fd)
 	while (str)
 	{
 		free(str);
-        i++;
+		i++;
 		str = get_next_line(fd);
 	}
 	return (i);
@@ -46,7 +46,7 @@ char	**tab_line(int fd, int size)
 	{
 		str = get_next_line(fd);
 		tab[i] = str;
-	i++;
+		i++;
 	}
 	tab[i] = NULL;
 	return (tab);
@@ -55,25 +55,22 @@ char	**tab_line(int fd, int size)
 int	ft_endswith(char *filename)
 {
 	char	*str;
-	int		size;
+	int		len;
 
 	str = ".ber";
-	size = ft_strlen(str);
-	while (size)
+	len = ft_strlen(filename);
+	if (len < 5 || ft_strncmp(filename + (len - 4), str, 4) != 0)
 	{
-		if(filename[size] != str[size])
-		{
-			return (FAIL);
-		}
-	size--;
+		ft_printf("Error\nextension\n");
+		return (1);
 	}
 	return (0);
 }
 
 int	ft_nb_collect(int cols, int rows, char **map)
 {
-    int	y;
-    int	x;
+	int	y;
+	int	x;
 	int	count;
 
 	y = 1;
@@ -85,10 +82,10 @@ int	ft_nb_collect(int cols, int rows, char **map)
 		{
 			if (map[y][x] == 'C')
 				count++;
-		x++;
+			x++;
 		}
-	y++;
-	x = 0;
+		y++;
+		x = 0;
 	}
 	return (count);
 }

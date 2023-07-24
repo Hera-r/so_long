@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:16 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 00:23:07 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 23:03:44 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_newline(char *str_line)
 	{
 		if (str_line[i] == '\n')
 			return (0);
-	i++;
+		i++;
 	}
 	return (1);
 }
@@ -60,7 +60,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s1 && s1[i])
 	{
 		new_str[i] = s1[i];
-	i++;
+		i++;
 	}
 	while (s2[j] && s2[j] != '\n')
 		new_str[i++] = s2[j++];

@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:31:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/21 23:46:32 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:05:28 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@ t_sizemap	ft_rows_cols_map(char **map)
 {
 	t_sizemap	sizemap;
 
-	sizemap.rows = ft_len_not_newline(map[0]); // 28
-	sizemap.cols = count_element_tab(map); // 5
+	sizemap.rows = ft_len_not_newline(map[0]);
+	sizemap.cols = count_element_tab(map);
 	return (sizemap);
+}
+
+void	ft_init_poz(t_pos *poz)
+{
+	poz->x = -1;
+	poz->y = -1;
 }
 
 t_pos	ft_find_pos_player(char **map)
@@ -30,8 +36,7 @@ t_pos	ft_find_pos_player(char **map)
 
 	y = 0;
 	x = 0;
-	poz.x = -1;
-	poz.y = -1;
+	ft_init_poz(&poz);
 	sizemap = ft_rows_cols_map(map);
 	while (y < sizemap.cols)
 	{
@@ -43,15 +48,15 @@ t_pos	ft_find_pos_player(char **map)
 				poz.x = x;
 				return (poz);
 			}
-		x++;
+			x++;
 		}
-	y++;
-	x = 0;
+		y++;
+		x = 0;
 	}
 	return (poz);
 }
 
-int ft_is_valid(int px, int py, char **map)
+int	ft_is_valid(int px, int py, char **map)
 {
 	t_sizemap	sizemap;
 
@@ -71,9 +76,9 @@ int ft_is_valid(int px, int py, char **map)
 int	ft_dfs(int y, int x, char **map)
 {
 	t_axe	axes;
-	int	i;
-	int	px;
-	int	py;
+	int		i;
+	int		px;
+	int		py;
 
 	i = 0;
 	axes = ft_init_axe();
@@ -87,9 +92,9 @@ int	ft_dfs(int y, int x, char **map)
 		if (ft_is_valid(px, py, map) == 0 && map[py][px] != 'X')
 		{
 			if (ft_dfs(py, px, map) == 0)
-				return (free(axes.dx), free(axes.dy),SUCCESS);
+				return (free(axes.dx), free(axes.dy), SUCCESS);
 		}
-	i++;
+		i++;
 	}
 	return (free(axes.dx), free(axes.dy), FAIL);
 }

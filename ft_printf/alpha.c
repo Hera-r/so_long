@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   alpha.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 16:34:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 22:43:10 by hrandria         ###   ########.fr       */
+/*   Created: 2023/01/12 12:46:03 by hrandria          #+#    #+#             */
+/*   Updated: 2023/07/24 23:33:53 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	ft_strlen(char *str)
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *s)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	if (!s)
+		return (write(1, "(null)", 6), 6);
+	while (s[i])
+	{
+		write(1, &s[i], 1);
 		i++;
+	}
 	return (i);
 }

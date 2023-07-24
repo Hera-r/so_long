@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:21:23 by hrandria          #+#    #+#             */
-/*   Updated: 2023/03/29 22:41:06 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:42:48 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	element_count(char const *s, char c)
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
-		i++;
+			i++;
 		if (s[i] && s[i] != c)
 		{
 			count++;
 			while (s[i] && s[i] != c)
-			i++;
+				i++;
 		}
 	}
 	return (count);
@@ -62,7 +62,7 @@ static char	**free_tab(char **tab)
 	while (tab[i])
 	{
 		free(tab[i]);
-	i++;
+		i++;
 	}
 	free(tab);
 	return (0);
@@ -80,12 +80,12 @@ static char	**append_list(char const *s, char c, char **tab)
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
-		i++;
+			i++;
 		if (s[i] && s[i] != c)
 		{
 			start = i;
 			while (s[i] && s[i] != c)
-			i++;
+				i++;
 			tab[index] = strdup_index(s, start, i);
 			if (!tab[index])
 				return (free_tab(tab));

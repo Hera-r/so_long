@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:34:16 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 00:48:05 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/24 22:41:22 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	is_rectangle(char **tab)
 	{
 		if (tmp != ft_len_not_newline(tab[i]))
 		{
-			printf("An error in the map or Not rectangle\n");
+			ft_printf("Error\nIn the map or Not rectangle\n");
 			return (1);
 		}
 		i++;
@@ -62,7 +62,7 @@ int	ft_not_start_and_end(char **tab, int tab_size)
 	{
 		if (tab[i][0] != '1' || tab[i][len_str] != '1')
 		{
-			printf("not valid start or end the line\n");
+			ft_printf("Error\nNot valid start or end the line\n");
 			return (1);
 		}
 		i++;
@@ -81,12 +81,12 @@ int	ft_valid_wall_perimeter(char **tab)
 	{
 		if (tab[0][i] != '1')
 		{
-			printf("not valid top\n");
+			ft_printf("Error\nNot valid top\n");
 			return (1);
 		}
 		if (tab[tab_size][i] != '1')
 		{
-			printf("not valid bottom\n");
+			ft_printf("Error\nNot valid bottom\n");
 			return (1);
 		}
 		i++;
