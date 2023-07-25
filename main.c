@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:45:42 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 23:32:02 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/25 20:48:08 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_map_check(char **map)
 	t_sizemap	cordo;
 
 	cordo = ft_rows_cols_map(map);
+	if (ft_max_len_map(cordo) == 1)
+		return (FAIL);
 	if (is_rectangle(map) == 1)
 		return (FAIL);
 	if (ft_valid_wall_perimeter(map) == FAIL)

@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:05:03 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 22:38:55 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/25 20:49:31 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,14 @@ int	ft_size_line(char *filename)
 		return (close(fd), 1);
 	}
 	return (close(fd), size);
+}
+
+int	ft_max_len_map(t_sizemap cordo)
+{
+	if (cordo.rows > 35 || cordo.cols > 20)
+	{
+		ft_printf("Error\nThe map size is too large\n");
+		return (FAIL);
+	}
+	return (SUCCESS);
 }

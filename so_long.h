@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 10:03:35 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 23:13:48 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/25 20:46:53 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ int			ft_all_img(t_vars *vars);
 int			ft_second_fd(char *filename);
 void		ft_destroy_img(t_vars *vars);
 int			ft_the_game(char **map_cpy);
+int			ft_max_len_map(t_sizemap cordo);
 #endif

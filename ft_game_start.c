@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 21:16:31 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 22:07:55 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/25 20:52:58 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	ft_game(char **map)
 	if (ft_all_img(&vars) == 1)
 		return (ft_destroy_img(&vars), mlx_destroy_display(vars.mlx),
 			free(vars.mlx), FAIL);
-	vars.win = mlx_new_window(vars.mlx, 1900, 1000, "So long");
+	vars.win = mlx_new_window(vars.mlx, cordo.rows * 43, \
+		cordo.cols * 50, "So long");
 	if (vars.win == NULL)
 		return (ft_destroy_img(&vars), mlx_destroy_display(vars.mlx),
 			free(vars.mlx), FAIL);
