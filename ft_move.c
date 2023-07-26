@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:19:28 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/25 21:00:28 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:35:58 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ void	ft_move_up(t_vars vars, t_pos player, char **map)
 	if (map[player.y - 1][player.x] != '1')
 	{
 		if (map[player.y - 1][player.x] == 'C')
-		{
 			(*vars.count)--;
-			(*vars.nb_move)++;
-			ft_printf("Number of moves : %d\n", *vars.nb_move);
-		}
 		if (map[player.y - 1][player.x] != 'E' && *vars.count >= 0)
 		{
 			map[player.y][player.x] = '0';
