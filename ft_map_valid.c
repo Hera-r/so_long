@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:58:53 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 22:24:04 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/26 13:15:20 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	ft_elements_valid(int cols, int rows, char **map)
 	{
 		while (x < rows)
 		{
-			if (map[y][x] != '1' && map[y][x] != 'C' && map[y][x] != 
-				'P' && map[y][x] != 'E' && map[y][x] != '0')
+			if (map[y][x] != '1' && map[y][x] != 'C' && map[y][x]
+				!= 'P' && map[y][x] != 'E' && map[y][x] != '0')
 			{
 				ft_printf("Error\nElement not valid\n");
 				return (FAIL);
@@ -102,12 +102,12 @@ int	ft_nb_elmts(int cols, int rows, char **map)
 	}
 	else if (elemts.p > 1 || elemts.p == 0)
 	{
-		ft_printf("Error\nPlayer not found or superior 1\n");
+		ft_printf("Error\nPlayer not found or more than one\n");
 		return (FAIL);
 	}
 	else if (elemts.e > 1 || elemts.e == 0)
 	{
-		ft_printf("Error\nExit not found or superior 1\n");
+		ft_printf("Error\nExit not found or more than one\n");
 		return (FAIL);
 	}
 	return (SUCCESS);

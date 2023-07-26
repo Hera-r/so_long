@@ -6,7 +6,7 @@
 /*   By: hrandria <hrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:32:21 by hrandria          #+#    #+#             */
-/*   Updated: 2023/07/24 22:23:57 by hrandria         ###   ########.fr       */
+/*   Updated: 2023/07/26 13:18:35 by hrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	int	i;
 
 	i = 0;
-	while (((unsigned char)s1[i] == (unsigned char)s2[i]) 
+	while (((unsigned char)s1[i] == (unsigned char)s2[i])
 		&& s1[i] && s2[i] && n)
 	{
 		i++;
